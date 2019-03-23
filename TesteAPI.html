@@ -1,0 +1,27 @@
+<!DOCTYPE  html>
+<html>
+<head>
+<script>
+fetch('http://localhost:8081/phpobjetos/api.php/pessoa', {
+    method: 'post',
+    body: JSON.stringify({id:103,nome:"Pedro",telefone:"13-3434-2233"})
+  }).then(function(response) {
+     response.text().then(function(text){dados.innerHTML=text + "  (Status: " + response.status + ")<br/>"; });
+  }).catch(function(err) {
+    dados.innerHTML=err;
+  });
+
+  fetch('http://localhost:8081/phpobjetos/api.php/pessoa', {
+      method: 'put',
+      body: JSON.stringify({id:103,nome:"updated",telefone:"13-1313-0000"})
+    }).then(function(response) {
+       response.text().then(function(text){dados.innerHTML+=text + "  (Status: " + response.status + ")<br/>";});
+    }).catch(function(err) {
+      dados.innerHTML+=err;
+    });
+</script>
+</head>
+<body>
+<div id="dados"></div>
+</body>
+</html>
